@@ -16,6 +16,15 @@ jobs:
             with:
                 java-version: 17
 
+          - name: Set up Android SDK
+            uses: android-actions/setup-android@v2
+            with:
+              api-level: 34
+              build-tools: 34.0.0
+
+          - name: Install Dependencies
+            run: ./gradlew dependencies
+
           - name: Run Tests
             run: ./gradlew test
 
