@@ -1,4 +1,4 @@
-package com.example.datastore.datastore
+package com.gpsamy.easydatastore
 
 import android.util.Log
 import androidx.datastore.core.DataStore
@@ -24,9 +24,11 @@ class DataStoreHelper {
         private val uiScope = CoroutineScope(scopeJob + Dispatchers.IO + coroutineException)
 
         @JvmStatic
-        fun initialize(dataStore: DataStore<Preferences>) {
-            if (!this::dataStore.isInitialized) {
-                this.dataStore = dataStore
+        fun initialize(dataStore: DataStore<Preferences>?) {
+            if (null == dataStore) {
+                throw Exception("DataStore is not initialized: datastore is null")
+            } else if (!this::dataStore.isInitialized) {
+                Companion.dataStore = dataStore
             }
         }
 
@@ -159,6 +161,7 @@ class DataStoreHelper {
             }
             return booleanArray
         }
+
 
         /**
          * Method to read Boolean to Synchronously

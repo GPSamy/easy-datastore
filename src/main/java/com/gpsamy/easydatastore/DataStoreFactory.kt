@@ -1,4 +1,4 @@
-package com.example.datastore.datastore
+package com.gpsamy.easydatastore
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -22,7 +22,7 @@ class DataStoreFactory {
         private var sharedPrefMigrationName: String? = null
 
         fun context(context: Context) = apply {
-            this.applicationContext = context.applicationContext
+            this.applicationContext = context
         }
 
         fun dataStoreName(name: String) = apply {
