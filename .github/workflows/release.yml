@@ -1,0 +1,33 @@
+name: Publish to Jitpack
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+
+jobs:
+   publish:
+     if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.pull_request.merged == true
+
+     runs-on: ubuntu-latest
+
+     steps:
+     - name: Checkout code
+       uses: actions/checkout@v2
+
+     - name: Set up Ruby
+       uses: ruby/setup-ruby@v1
+       with:
+         ruby-version: '3.0'
+
+     - name: Install Fastlane
+       run: gem install fastlane -NV
+
+     - name: Install hub
+       run: sudo apt-get install hub
+
+     - name: Run Fastlane
+       run: fastlane android publish_to_jitpack
+       evn:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
