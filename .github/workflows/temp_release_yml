@@ -1,4 +1,4 @@
-name: Publish to Jitpack
+name: Publish to Jitpack1
 
 on:
   workflow_run:
