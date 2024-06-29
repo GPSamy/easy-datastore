@@ -20,13 +20,4 @@ jobs:
          run: |
            echo "${{ toJson(github) }}" | jq '. | {event: .event, pull_request: .pull_request}'
 
-   publish:
-
-     runs-on: ubuntu-latest
-
-     steps:
-     - name: Checkout code
-       uses: actions/checkout@v2
-       
-       env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+   
