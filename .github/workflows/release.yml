@@ -2,7 +2,7 @@ name: Publish to Jitpack
 
 on:
   workflow_run:
-    workflows: ["CI"]
+    workflows: ["Android Build"]
     types:
       - completed
 
