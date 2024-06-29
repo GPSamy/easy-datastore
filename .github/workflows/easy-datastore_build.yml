@@ -1,7 +1,7 @@
 name: Android Build
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, closed]
 jobs:
     build:
         runs-on: ubuntu-latest
