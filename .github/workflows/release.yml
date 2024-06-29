@@ -14,7 +14,9 @@ jobs:
 
      steps:
        - name: Print GitHub Context
-         run: echo "${{ toJson(github) }}"
+         run:
+           echo "${{ toJson(github) }}" | jq '{ event:
+             .event, pull_request: .pull_request }'
 
    publish:
      if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.pull_request[0].merged == true
