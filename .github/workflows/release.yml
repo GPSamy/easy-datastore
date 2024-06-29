@@ -29,5 +29,5 @@ jobs:
 
      - name: Run Fastlane
        run: fastlane android publish_to_jitpack
-       evn:
+       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
