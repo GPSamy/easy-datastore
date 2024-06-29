@@ -38,6 +38,6 @@ jobs:
 
      - name: Install hub
        run: sudo apt-get install hub
-
-       evn:
+       
+       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
