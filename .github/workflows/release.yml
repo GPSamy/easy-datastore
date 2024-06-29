@@ -8,7 +8,7 @@ on:
 
 jobs:
    publish:
-     if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.pull_request.merged == true
+     if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.pull_request[0].merged == true
 
      runs-on: ubuntu-latest
 
