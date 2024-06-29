@@ -32,9 +32,6 @@ jobs:
        uses: ruby/setup-ruby@v1
        with:
          ruby-version: '3.0'
-
-     - name: Install Fastlane
-       run: gem install fastlane -NV
        
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
