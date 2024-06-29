@@ -21,7 +21,7 @@ jobs:
            echo "${{ toJson(github) }}" | jq '. | {event: .event, pull_request: .pull_request}'
 
    publish:
-     
+
      runs-on: ubuntu-latest
 
      steps:
@@ -39,7 +39,5 @@ jobs:
      - name: Install hub
        run: sudo apt-get install hub
 
-     - name: Run Fastlane
-       run: fastlane android publish_to_jitpack
        evn:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
