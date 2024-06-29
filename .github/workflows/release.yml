@@ -35,9 +35,6 @@ jobs:
 
      - name: Install Fastlane
        run: gem install fastlane -NV
-
-     - name: Install hub
-       run: sudo apt-get install hub
        
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
