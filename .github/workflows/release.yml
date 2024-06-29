@@ -4,9 +4,18 @@ on:
   workflow_run:
     workflows: ["Android Build"]
     types:
+      - opened
+      - synchronize
       - completed
 
 jobs:
+   debug:
+     runs-on: ubuntu-latest
+
+     steps:
+       - name: Print GitHub Context
+         run: echo "${{ toJson(github) }}"
+
    publish:
      if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.pull_request[0].merged == true
 
