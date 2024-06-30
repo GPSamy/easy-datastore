@@ -7,6 +7,12 @@ on:
       - opened
       - synchronize
       - completed
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to checkout'
+        required: true
+        default: 'main'
 
 jobs:
    debug:
@@ -24,6 +30,8 @@ jobs:
      steps:
      - name: Checkout code
        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
      - name: Set up Ruby
        uses: ruby/setup-ruby@v1
