@@ -21,16 +21,23 @@ allprojects {
         maven { url 'https://jitpack.io' }
     }
 }
+```
+
 ### Step 2: Add Dependency
 Then, add the dependency in your module's build.gradle file:
+```groovy
 dependencies {
     implementation 'com.github.YourUsername:easy-datastore:Tag'
 }
+
+```
+
 
 ## Usage
 ### Setting Up DataStore
 Create an instance of DataStore using the DataStoreFactory:
 
+```groovy
 import com.example.datastore.datastore.DataStoreFactory
 
 val dataStore = DataStoreFactory.Creator()
@@ -44,6 +51,7 @@ import com.example.datastore.datastore.DataStoreHelper
 
 DataStoreHelper.initialize(dataStore)
 
+```
 
 
 
