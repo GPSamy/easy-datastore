@@ -26,6 +26,6 @@ jobs:
             uses: peter-evans/repository-dispatch@v1
             with:
               token: ${{ secrets.GITHUB_TOKEN}}
-              event-type: trigger - release
+              event-type: trigger-release
               client-payload: '{"branch": "${{ github.ref }}"}'   
 
