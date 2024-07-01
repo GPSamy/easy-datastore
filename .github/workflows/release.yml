@@ -33,6 +33,10 @@ jobs:
        with:
         ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.event.workflow_run.head_branch }}
 
+     - name: Print Branch Name
+       run: |
+        echo "Checked out branch: ${{ github.event.client_payload.branch }}"
+
      - name: Set up Ruby
        uses: ruby/setup-ruby@v1
        with:
