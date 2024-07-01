@@ -1,8 +1,6 @@
 name: Android Build
 on:
-  push:
-    branches:
-      - issue-publish-job-skipped
+
   pull_request:
     types: [opened, synchronize, closed]
 jobs:
@@ -25,7 +23,7 @@ jobs:
           - name: Trigger Release Workflow
             uses: peter-evans/repository-dispatch@v1
             with:
-              token: ${{ secrets.GITHUB_TOKEN}}
+              token: ${{ secrets.PAT }}
               event-type: trigger-release
               client-payload: '{"branch": "${{ github.ref }}"}'   
 
