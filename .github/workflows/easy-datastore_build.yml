@@ -28,5 +28,5 @@ jobs:
             with:
               token: ${{ secrets.PAT }}
               event-type: trigger-release
-              client-payload: '{"branch": "${{ github.ref }}"}'   
+              client-payload: '{"branch": "${{ github.head_ref}}"}'   
 
