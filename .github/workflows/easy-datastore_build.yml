@@ -21,45 +21,24 @@ jobs:
                 java-version: 17
 
           - name: Build Project
-            run: ./gradlew assemble
-
-            on:
-              repository_dispatch:
-                types: [trigger-release]      
+            run: ./gradlew assemble   
             
-            jobs:
-               debug:
-                 runs-on: ubuntu-latest
+    publish:
+        runs-on: ubuntu-latest
             
-                 steps:
-                   - name: Print GitHub Context
-                     run: echo "${{ toJson(github) }}"
-            
-               publish:
-                runs-on: ubuntu-latest
-            
-                steps:
-                 - name: Checkout code
-                   uses: actions/checkout@v3
-                   with:
-                    ref: ${{ github.event.client_payload.branch || 'master' }}
-                    
-                 - name: Print Branch Name
-                   run: |
-                    echo "Checked out branch: ${{ github.event.client_payload.branch }}"
-            
-                 - name: Set up Ruby
-                   uses: ruby/setup-ruby@v1
-                   with:
-                     ruby-version: '3.0'
-            
-                 - name: Install Fastlane
-                   run: gem install fastlane -NV
-            
-                 - name: Install hub
-                   run: sudo apt-get install hub
-            
-                
-                   env:
-                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            
+        steps:
+          - name: Set up Ruby
+            uses: ruby/setup-ruby@v1
+            with:
+                ruby-version: '3.0'
+   
+          - name: Install Fastlane
+            run: gem install fastlane -NV
+   
+          - name: Install hub
+            run: sudo apt-get install hub
+   
+       
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
