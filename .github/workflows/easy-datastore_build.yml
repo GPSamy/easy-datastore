@@ -6,6 +6,8 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        outputs:
+         condition: ${{ steps.set-output.outputs.condition }}
         steps:
           - name: Checkout Code
             uses: actions/checkout@v3
@@ -25,7 +27,11 @@ jobs:
 
           - name: Determine condition
             id: set-output
-            run: echo "::set-output name=condition::true"   
+            run: |
+              # Replace with your actual logic to set the condition
+              CONDITION=true  # This line sets the CONDITION variable to true
+              echo "Condition is $CONDITION"
+              echo "::set-output name=condition::$CONDITION"  # This line sets the output condition to the value of CONDITION 
             
     publish:
         runs-on: ubuntu-latest
