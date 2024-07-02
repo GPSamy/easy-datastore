@@ -21,11 +21,17 @@ jobs:
                 java-version: 17
 
           - name: Build Project
-            run: ./gradlew assemble   
+            run: ./gradlew assemble
+
+          - name: Determine condition
+            id: set-output
+            run: echo "::set-output name=condition::true"   
             
     publish:
         runs-on: ubuntu-latest
         needs: build    
+        if: ${{ needs.build.outputs.condition == 'true' }}
+    
         steps:
           - name: Set up Ruby
             uses: ruby/setup-ruby@v1
