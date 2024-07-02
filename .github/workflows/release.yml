@@ -23,16 +23,13 @@ jobs:
          run: echo "${{ toJson(github) }}"
 
    publish:
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.pull_requests[0].merged == true }}
-     
     runs-on: ubuntu-latest
 
     steps:
      - name: Checkout code
        uses: actions/checkout@v3
        with:
-        ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.branch || github.event.workflow_run.head_branch }}
-
+        ref: ${{ github.event.client_payload.branch || 'master' }}
      - name: Print Branch Name
        run: |
         echo "Checked out branch: ${{ github.event.client_payload.branch }}"
