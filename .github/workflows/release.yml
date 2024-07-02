@@ -1,16 +1,6 @@
 name: Publish to Jitpack
 
 on:
-  workflow_run:
-    workflows: ["Android Build"]
-    types:
-      - completed
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to checkout'
-        required: true
-        default: 'master'
   repository_dispatch:
     types: [trigger-release]      
 

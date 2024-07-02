@@ -14,9 +14,6 @@ jobs:
                 
           - name: Print GitHub Context
             run: echo "${{ toJson(github) }}"   
-            
-          - name: Print my workflow ref head
-            run: echo "${{github.head_ref}}"
 
           - name: Set Up JDK
             uses: actions/setup-java@v1
