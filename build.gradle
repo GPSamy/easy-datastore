@@ -42,6 +42,43 @@ android {
             withSourcesJar()
             withJavadocJar()
         }
+
+
+        publications {
+            maven(MavenPublication) {
+                // Apply the library's components
+                from components.release
+
+                groupId = 'com.gpsamy'
+                artifactId = 'easy-datastore'
+                version = '1.0.0'
+
+                // Configure the publication details
+                pom {
+                    name = 'EasyDataStore'
+                    description = 'This library make the use of Datastore simple'
+                    url = 'https://github.com/GPSamy/easy-datastore'
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'gpsamy'
+                            name = 'Periasamy G'
+                            email = 'gperiasamy07@gmail.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:git://github.com/GPSamy/easy-datastore.git'
+                        developerConnection = 'scm:git:ssh://github.com:GPSamy/easy-datastore.git'
+                        url = 'https://github.com/GPSamy/easy-datastore'
+                    }
+                }
+            }
+        }
     }
     namespace 'com.gpsamy.easydatastore'
 }
