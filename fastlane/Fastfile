@@ -1,0 +1,32 @@
+fastlane_version "2.187.0"
+
+default_platform(:android)
+
+platform :android do
+  desc "Publish easy-datastore to JitPack"
+  lane :publish_to_jitpack do
+    # Get the latest commit hash
+    latest_commit_hash = sh("git rev-parse --short HEAD").strip
+    version_number = ENV['VERSION_NUMBER'] || 'v1.0.0'
+
+    begin
+      # Tag the release
+      sh "git tag #{version_number}"
+      sh "git push origin #{version_number}"
+
+      # Create a release on GitHub
+      sh "hub release create -m 'Release #{version_number}' #{version_number}"
+
+      # Build and publish to Maven local
+      gradle(task: "clean")
+      gradle(task: "assembleRelease")
+      gradle(task: "publishToMavenLocal")
+
+      UI.message("Successfully published version #{version_number} to JitPack")
+
+    rescue => e
+      UI.error("Failed to publish_to_jitpack: #{e.message}")
+      raise
+    end
+  end
+end
