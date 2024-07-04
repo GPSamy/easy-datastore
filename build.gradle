@@ -1,24 +1,25 @@
 plugins {
     id 'com.android.library' version '8.1.2'
     id 'org.jetbrains.kotlin.android' version '1.9.0'
+    id 'maven-publish'
 }
 
 android {
     compileSdk 34
+    namespace 'com.gpsamy.easydatastore'
+
     defaultConfig {
         minSdk 23
         targetSdk 34
         versionCode 1
         versionName "1.0.0"
-    namespace 'com.gpsamy.easydatastore'
-    compileSdk 34
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
-        debug{
-            testCoverageEnabled = true
+        debug {
+            testCoverageEnabled true
         }
 
         release {
@@ -26,7 +27,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -36,16 +36,12 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+}
 
+afterEvaluate {
     publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
-
-
         publications {
-            maven(MavenPublication) {
+            create("mavenJava", MavenPublication) {
                 // Apply the library's components
                 from components.release
 
@@ -56,7 +52,7 @@ android {
                 // Configure the publication details
                 pom {
                     name = 'EasyDataStore'
-                    description = 'This library make the use of Datastore simple'
+                    description = 'This library makes the use of Datastore simple'
                     url = 'https://github.com/GPSamy/easy-datastore'
                     licenses {
                         license {
@@ -80,7 +76,6 @@ android {
             }
         }
     }
-    namespace 'com.gpsamy.easydatastore'
 }
 
 dependencies {
@@ -94,23 +89,16 @@ dependencies {
     implementation 'androidx.test.ext:junit-ktx:1.1.5'
     implementation 'com.google.ar:core:1.44.0'
 
-
     testImplementation 'junit:junit:4.13.2'
     testImplementation "org.jetbrains.kotlin:kotlin-test:1.7.10"
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.0'
     androidTestImplementation 'androidx.test:core:1.6.0'
-
-    // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation "androidx.test:runner:1.6.0"
     androidTestImplementation "androidx.test:rules:1.6.0"
-
-    // Assertions
     androidTestImplementation "androidx.test.ext:junit:1.2.0"
     androidTestImplementation "androidx.test.ext:truth:1.6.0"
 
-    testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:5.4.0'
     testImplementation 'org.robolectric:robolectric:4.12.2'
 }
-
