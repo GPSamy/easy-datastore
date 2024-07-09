@@ -39,7 +39,18 @@ jobs:
           - name: Set up Ruby
             uses: ruby/setup-ruby@v1
             with:
-                ruby-version: '3.0'
+                ruby-version: '3.1'
+
+          - name: Cache bundle
+            uses: actions/cache@v3
+            with:
+              path: vendor/bundle
+              key: ${{ runner.os }}-bundler-${{ hashFiles('**/Gemfile.lock') }}
+              restore-keys: |
+                 ${{ runner.os }}-bundler-
+
+          - name: Install dependencies
+            run: bundle install --path vendor/bundle
    
           - name: Install Fastlane
             run: gem install fastlane -NV
