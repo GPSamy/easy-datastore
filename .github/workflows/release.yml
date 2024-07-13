@@ -1,12 +1,8 @@
 name: Publish to Jitpack
 
 on:
-  workflow_run:
-    workflows: ["Android Build"]
-    types:
-      - opened
-      - synchronize
-      - completed
+  repository_dispatch:
+    types: [trigger-release]      
 
 jobs:
    debug:
@@ -17,13 +13,17 @@ jobs:
          run: echo "${{ toJson(github) }}"
 
    publish:
-     if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.pull_request[0].merged == true
+    runs-on: ubuntu-latest
 
-     runs-on: ubuntu-latest
-
-     steps:
+    steps:
      - name: Checkout code
-       uses: actions/checkout@v2
+       uses: actions/checkout@v3
+       with:
+        ref: ${{ github.event.client_payload.branch || 'master' }}
+        
+     - name: Print Branch Name
+       run: |
+        echo "Checked out branch: ${{ github.event.client_payload.branch }}"
 
      - name: Set up Ruby
        uses: ruby/setup-ruby@v1
@@ -38,5 +38,6 @@ jobs:
 
      - name: Run Fastlane
        run: fastlane android publish_to_jitpack
+    
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

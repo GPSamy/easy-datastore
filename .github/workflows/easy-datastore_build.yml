@@ -1,12 +1,15 @@
 name: Android Build
 on:
+
   pull_request:
     types: [opened, synchronize, closed]
 jobs:
     build:
         runs-on: ubuntu-latest
+        outputs:
+         condition: ${{ steps.set-output.outputs.condition }}
         steps:
-          - name: Checkout Code
+          - name: I 
             uses: actions/checkout@v3
             with:
                 token: ${{ secrets.GH_TOKEN }}
@@ -19,3 +22,54 @@ jobs:
           - name: Build Project
             run: ./gradlew assemble
 
+          - name: Determine condition
+            id: set-output
+            run: |
+              # Replace with your actual logic to set the condition
+              CONDITION=true  # This line sets the CONDITION variable to true
+              echo "Condition is $CONDITION"
+              echo "::set-output name=condition::$CONDITION"  # This line sets the output condition to the value of CONDITION 
+            
+    publish:
+        runs-on: ubuntu-latest
+        needs: build    
+        if: ${{ needs.build.outputs.condition == 'true' }}
+    
+        steps:
+          - name: Set up Ruby
+            uses: ruby/setup-ruby@v1
+            with:
+                ruby-version: '3.1'
+
+          - name: Cache bundle
+            uses: actions/cache@v3
+            with:
+              path: vendor/bundle
+              key: ${{ runner.os }}-bundler-${{ hashFiles('**/Gemfile.lock') }}
+              restore-keys: |
+                 ${{ runner.os }}-bundler-
+
+          - name: Check for Gemfile
+            run: |
+                    if [ ! -f Gemfile ]; then
+                      echo "Gemfile not found in the root directory. Please ensure it exists."
+                      exit 1
+                    fi         
+
+          - name: Install dependencies
+            run: |
+             bundle config set --local path 'vendor/bundle'
+             bundle install
+   
+          - name: Install Fastlane
+            run: gem install fastlane -NV
+   
+          - name: Install hub
+            run: sudo apt-get install hub
+   
+          - name: Run Fastlane
+            run: fastlane android publish_to_jitpack  
+       
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        

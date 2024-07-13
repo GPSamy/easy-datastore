@@ -22,8 +22,6 @@ platform :android do
       gradle(task: "assembleRelease")
       gradle(task: "publishToMavenLocal")
 
-      UI.message("Successfully published version #{version_number} to JitPack")
-
     rescue => e
       UI.error("Failed to publish_to_jitpack: #{e.message}")
       raise
