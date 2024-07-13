@@ -49,6 +49,13 @@ jobs:
               restore-keys: |
                  ${{ runner.os }}-bundler-
 
+          - name: Check for Gemfile
+            run: |
+                    if [ ! -f Gemfile ]; then
+                      echo "Gemfile not found in the root directory. Please ensure it exists."
+                      exit 1
+                    fi         
+
           - name: Install dependencies
             run: |
              bundle config set --local path 'vendor/bundle'
