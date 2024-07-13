@@ -9,7 +9,7 @@ jobs:
         outputs:
          condition: ${{ steps.set-output.outputs.condition }}
         steps:
-          - name: Checkout Code
+          - name: I 
             uses: actions/checkout@v3
             with:
                 token: ${{ secrets.GH_TOKEN }}

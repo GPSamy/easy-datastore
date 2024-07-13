@@ -35,7 +35,7 @@ jobs:
 
      - name: Install hub
        run: sudo apt-get install hub
-       
+
      - name: Run Fastlane
        run: fastlane android publish_to_jitpack
     
