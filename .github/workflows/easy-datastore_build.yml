@@ -67,13 +67,14 @@ jobs:
           - name: Install hub
             run: sudo apt-get install hub
 
+   
           - name: Configure hub with PAT
             run: |
                   git config --global hub.protocol https
-                  echo -e "github.com:\n- user: YOUR_GITHUB_USERNAME\n  oauth_token: ${{ secrets.GH_PAT }}\n  protocol: https" > ~/.config/hub
+                  echo -e "github.com:\n- user: YOUR_GITHUB_USERNAME\n  oauth_token: ${{ secrets.GITHUB_TOKEN }}\n  protocol: https" > ~/.config/hub
                   env:
-                    GH_PAT: ${{ secrets.GH_PAT }}
-
+                    GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+                    
 
           - name: Run Fastlane
             run: fastlane android publish_to_jitpack  
