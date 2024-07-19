@@ -58,12 +58,21 @@ jobs:
               restore-keys: |
                 ${{ runner.os }}-bundler-
 
+          - name: List files in the root directory
+            run: ls -la
+
           - name: Check for Gemfile
             run: |
               if [ ! -f Gemfile ]; then
                 echo "Gemfile not found in the root directory. Please ensure it exists."
                 exit 1
               fi
+          - name: Check for Gemfile.lock in the root directory
+            run: |
+              if [ ! -f Gemfile.lock ]; then
+              echo "Gemfile.lock not found in the root directory. Please ensure it exists."
+              exit 1
+             fi    
 
           - name: Install dependencies
             run: |
