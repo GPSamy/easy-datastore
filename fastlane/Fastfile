@@ -29,7 +29,7 @@ platform :android do
       # Build and publish to Maven local
       gradle(task: "clean", flags: "--info")
       gradle(task: "assembleRelease", flags: "--info")
-      gradle(task: "publishToMavenLocal", flags "--info")
+      gradle(task: "publishToMavenLocal", flags: "--info")
 
     rescue => e
       UI.error("Failed to publish_to_jitpack: #{e.message}")
