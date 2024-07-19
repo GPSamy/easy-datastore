@@ -7,9 +7,10 @@ platform :android do
   lane :publish_to_jitpack do
     # Get the latest commit hash
     latest_commit_hash = sh("git rev-parse --short HEAD").strip
-    version_number = ENV['VERSION_NUMBER'] || 'v1.0.0'
+    version_number = ENV['VERSION_NUMBER'] || 'v1.1.0'
 
     begin
+      sh "git push --delete origin #{version_number}  || true"
       # Tag the release
       sh "git tag #{version_number}"
       sh "git push origin #{version_number}"
