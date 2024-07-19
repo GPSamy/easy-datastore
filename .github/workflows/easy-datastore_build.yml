@@ -41,10 +41,7 @@ jobs:
             with:
               token: ${{ secrets.GH_TOKEN }}
               ref: ${{ github.head_ref }}
-
-          - name: List files
-            run: ls -la
-
+              
           - name: Set up Ruby
             uses: ruby/setup-ruby@v1
             with:
