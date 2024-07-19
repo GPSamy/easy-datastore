@@ -10,6 +10,7 @@ platform :android do
     version_number = ENV['VERSION_NUMBER'] || 'v1.1.0'
 
     begin
+      sh "git tag -d #{version_number} || true"
       sh "git push --delete origin #{version_number}  || true"
       # Tag the release
       sh "git tag #{version_number}"
