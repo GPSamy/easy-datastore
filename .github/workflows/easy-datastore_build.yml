@@ -96,8 +96,9 @@ jobs:
             run: |
                 git config user.name "github-actions"
                 git config user.email "github-actions@github.com"
-                git tag test-tag
-                git push origin test-tag
+                TAG_NAME="test-tag-$(date +'%Y%m%d%H%M%S')
+                git tag $TAG_NAME               
+                git push origin $TAG_NAME
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
 
