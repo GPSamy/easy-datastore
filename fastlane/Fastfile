@@ -7,7 +7,7 @@ platform :android do
   lane :publish_to_jitpack do
     # Get the latest commit hash
     latest_commit_hash = sh("git rev-parse --short HEAD").strip
-    version_number = ENV['VERSION_NUMBER'] || 'v1.1.0'
+    version_number = ENV['VERSION_NUMBER'] || 'v1.0.0'
 
     begin
       UI.message "Deleting existing tag if it exits"
@@ -27,9 +27,9 @@ platform :android do
       sh "set -e; hub release create -m 'Release #{version_number}' #{version_number}"
 
       # Build and publish to Maven local
-      gradle(task: "clean")
-      gradle(task: "assembleRelease")
-      gradle(task: "publishToMavenLocal")
+      gradle(task: "clean", flags: "--info")
+      gradle(task: "assembleRelease", flags: "--info")
+      gradle(task: "publishToMavenLocal", flags "--info")
 
     rescue => e
       UI.error("Failed to publish_to_jitpack: #{e.message}")
