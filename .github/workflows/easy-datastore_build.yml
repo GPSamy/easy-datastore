@@ -70,9 +70,9 @@ jobs:
           - name: Check for Gemfile.lock in the root directory
             run: |
               if [ ! -f Gemfile.lock ]; then
-              echo "Gemfile.lock not found in the root directory. Please ensure it exists."
-              exit 1
-             fi    
+                echo "Gemfile.lock not found in the root directory. Please ensure it exists."
+                exit 1
+              fi    
 
           - name: Install dependencies
             run: |
