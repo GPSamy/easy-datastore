@@ -83,6 +83,15 @@ jobs:
             env:
               GH_PAT: ${{ secrets.GITHUB_TOKEN }}
 
+          - name: Test token permissions by pushing a test tag
+            run: |
+                git config user.name "github-actions"
+                git config user.email "github-actions@github.com"
+                git tag test-tag
+                git push origin test-tag
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+
           - name: Run Fastlane
             run: fastlane android publish_to_jitpack
             env:
