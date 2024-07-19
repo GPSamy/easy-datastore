@@ -89,7 +89,7 @@ jobs:
                 git config user.email "github-actions@github.com"
                 git tag test-tag
                 git push origin test-tag
-              env:
+            env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
 
           - name: Run Fastlane
