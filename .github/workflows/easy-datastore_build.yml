@@ -32,23 +32,23 @@ jobs:
             
     publish:
         runs-on: ubuntu-latest
-        needs: build    
+        needs: build
+
         if: ${{ needs.build.outputs.condition == 'true' }}
-    
         steps:
-          - name:
-              uses: actions/checkout@v3
-              with:
-                token: ${{ secrets.GH_TOKEN }}
-                ref: ${{ github.head_ref }}
+          - name: Checkout code
+            uses: actions/checkout@v3
+            with:
+              token: ${{ secrets.GH_TOKEN }}
+              ref: ${{ github.head_ref }}
 
           - name: List files
             run: ls -la
-            
+
           - name: Set up Ruby
             uses: ruby/setup-ruby@v1
             with:
-                ruby-version: '3.1'
+              ruby-version: '3.1'
 
           - name: Cache bundle
             uses: actions/cache@v3
@@ -56,36 +56,34 @@ jobs:
               path: vendor/bundle
               key: ${{ runner.os }}-bundler-${{ hashFiles('**/Gemfile.lock') }}
               restore-keys: |
-                 ${{ runner.os }}-bundler-
+                ${{ runner.os }}-bundler-
 
           - name: Check for Gemfile
             run: |
-                    if [ ! -f Gemfile ]; then
-                      echo "Gemfile not found in the root directory. Please ensure it exists."
-                      exit 1
-                    fi         
+              if [ ! -f Gemfile ]; then
+                echo "Gemfile not found in the root directory. Please ensure it exists."
+                exit 1
+              fi
 
           - name: Install dependencies
             run: |
-             bundle config set --local path 'vendor/bundle'
-             bundle install
-   
+              bundle config set --local path 'vendor/bundle'
+              bundle install
+
           - name: Install Fastlane
             run: gem install fastlane -NV
-   
+
           - name: Install hub
             run: sudo apt-get install hub
-   
+
           - name: Configure hub with PAT
             run: |
-                  git config --global hub.protocol https
-                  echo -e "github.com:\n- user: GPSamy\n  oauth_token: ${{ secrets.GITHUB_TOKEN }}\n  protocol: https" > ~/.config/hub
-                  env:
-                    GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+              git config --global hub.protocol https
+              echo -e "github.com:\n- user: GPSamy\n  oauth_token: ${{ secrets.GITHUB_TOKEN }}\n  protocol: https" > ~/.config/hub
+            env:
+              GH_PAT: ${{ secrets.GITHUB_TOKEN }}
 
           - name: Run Fastlane
-            run: fastlane android publish_to_jitpack  
-       
+            run: fastlane android publish_to_jitpack
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
