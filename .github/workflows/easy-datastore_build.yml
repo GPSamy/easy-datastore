@@ -42,10 +42,10 @@ jobs:
               token: ${{ secrets.GH_TOKEN }}
               ref: ${{ github.head_ref }}
 
-          - name: SetUp JDK
+          - name: Set Up JDK
             uses: actions/setup-java@v1
             with:
-                java-version 17
+              java-version: 17
 
           - name: List files
             run: ls -la
