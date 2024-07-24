@@ -9,7 +9,7 @@ jobs:
         outputs:
          condition: ${{ steps.set-output.outputs.condition }}
         steps:
-          - name: I 
+          - name: Checkout Code
             uses: actions/checkout@v3
             with:
                 token: ${{ secrets.GH_TOKEN }}
@@ -26,7 +26,7 @@ jobs:
             id: set-output
             run: |
               # Replace with your actual logic to set the condition
-              CONDITION=true  # This line sets the CONDITION variable to true
+              CONDITION=false  # This line sets the CONDITION variable to true
               echo "Condition is $CONDITION"
               echo "::set-output name=condition::$CONDITION"  # This line sets the output condition to the value of CONDITION 
             
@@ -47,9 +47,6 @@ jobs:
             with:
               java-version: 17
 
-          - name: List files
-            run: ls -la
-
           - name: Set up Ruby
             uses: ruby/setup-ruby@v1
             with:
@@ -62,22 +59,6 @@ jobs:
               key: ${{ runner.os }}-bundler-${{ hashFiles('**/Gemfile.lock') }}
               restore-keys: |
                 ${{ runner.os }}-bundler-
-
-          - name: List files in the root directory
-            run: ls -la
-
-          - name: Check for Gemfile
-            run: |
-              if [ ! -f Gemfile ]; then
-                echo "Gemfile not found in the root directory. Please ensure it exists."
-                exit 1
-              fi
-          - name: Check for Gemfile.lock in the root directory
-            run: |
-              if [ ! -f Gemfile.lock ]; then
-                echo "Gemfile.lock not found in the root directory. Please ensure it exists."
-                exit 1
-              fi    
 
           - name: Install dependencies
             run: |
