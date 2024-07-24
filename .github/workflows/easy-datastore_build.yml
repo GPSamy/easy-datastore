@@ -20,7 +20,7 @@ jobs:
                 java-version: 17
 
           - name: Build Project
-            run: ./gradlew assemble
+            run: ./gradlew build
 
           - name: Determine condition
             id: set-output
