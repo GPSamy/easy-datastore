@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/xml/standalone_badge_gravity_bottom_end.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/xml/standalone_badge_gravity_bottom_end.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/xml/standalone_badge_gravity_bottom_start.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/xml/standalone_badge_gravity_bottom_start.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/xml/standalone_badge_gravity_top_start.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/xml/standalone_badge_gravity_top_start.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/xml/standalone_badge.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/xml/standalone_badge.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/xml/standalone_badge_offset.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/xml/standalone_badge_offset.xml"
+    }
+]

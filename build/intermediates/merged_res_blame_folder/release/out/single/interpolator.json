@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_1.xml",
+        "source": "com.gpsamy.easydatastore-appcompat-1.3.1-12:/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_1.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator/mtrl_linear.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/interpolator/mtrl_linear.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator/fast_out_slow_in.xml",
+        "source": "com.gpsamy.easydatastore-appcompat-1.3.1-12:/interpolator/fast_out_slow_in.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_0.xml",
+        "source": "com.gpsamy.easydatastore-appcompat-1.3.1-12:/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml",
+        "source": "com.gpsamy.easydatastore-appcompat-1.3.1-12:/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator/btn_radio_to_off_mtrl_animation_interpolator_0.xml",
+        "source": "com.gpsamy.easydatastore-appcompat-1.3.1-12:/interpolator/btn_radio_to_off_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator/btn_radio_to_on_mtrl_animation_interpolator_0.xml",
+        "source": "com.gpsamy.easydatastore-appcompat-1.3.1-12:/interpolator/btn_radio_to_on_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml",
+        "source": "com.gpsamy.easydatastore-appcompat-1.3.1-12:/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml"
+    }
+]

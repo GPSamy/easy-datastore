@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator-v21/mtrl_fast_out_slow_in.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/interpolator-v21/mtrl_fast_out_slow_in.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator-v21/mtrl_linear_out_slow_in.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/interpolator-v21/mtrl_linear_out_slow_in.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/interpolator-v21/mtrl_fast_out_linear_in.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/interpolator-v21/mtrl_fast_out_linear_in.xml"
+    }
+]

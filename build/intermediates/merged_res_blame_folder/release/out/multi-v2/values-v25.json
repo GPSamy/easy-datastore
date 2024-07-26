@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.gpsamy.easydatastore-mergeReleaseResources-21:/values-v25/values-v25.xml",
+            "map": [
+                {
+                    "source": "/home/rapl14/.gradle/caches/transforms-3/a07cd5a154e183e7e31023d0486f706d/transformed/appcompat-1.3.1/res/values-v25/values-v25.xml",
+                    "from": {
+                        "startLines": "2,3,4,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,126,209,308",
+                        "endLines": "2,3,5,7",
+                        "endColumns": "70,82,12,12",
+                        "endOffsets": "121,204,303,414"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.gpsamy.easydatastore-merged_res-23:/values-v25/values-v25.xml",
+            "map": [
+                {
+                    "source": "/home/rapl14/.gradle/caches/transforms-3/a07cd5a154e183e7e31023d0486f706d/transformed/appcompat-1.3.1/res/values-v25/values-v25.xml",
+                    "from": {
+                        "startLines": "2,3,4,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,126,209,308",
+                        "endLines": "2,3,5,7",
+                        "endColumns": "70,82,12,12",
+                        "endOffsets": "121,204,303,414"
+                    }
+                }
+            ]
+        }
+    ]
+}

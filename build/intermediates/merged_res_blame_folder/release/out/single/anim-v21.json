@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/anim-v21/fragment_fast_out_extra_slow_in.xml",
+        "source": "com.gpsamy.easydatastore-fragment-1.3.6-0:/anim-v21/fragment_fast_out_extra_slow_in.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/anim-v21/mtrl_bottom_sheet_slide_out.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/anim-v21/mtrl_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/anim-v21/mtrl_bottom_sheet_slide_in.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/anim-v21/mtrl_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/anim-v21/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "com.gpsamy.easydatastore-merged_res-23:/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "com.gpsamy.easydatastore-material-1.4.0-1:/anim-v21/design_bottom_sheet_slide_out.xml"
+    }
+]
