@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.library' version '8.1.2'
+    id 'com.android.library' version '8.1.4'
     id 'org.jetbrains.kotlin.android' version '1.9.0'
     id 'maven-publish'
 }
@@ -47,7 +47,7 @@ afterEvaluate {
 
                 groupId = 'com.gpsamy'
                 artifactId = 'easy-datastore'
-                version = '1.1.0'
+                version = '1.0.0'
 
                 // Configure the publication details
                 pom {
@@ -75,6 +75,23 @@ afterEvaluate {
                 }
             }
         }
+        repositories {
+            maven {
+                url = uri("https://jitpack.io")
+                credentials {
+                    username = project.findProperty("mavenUsername") ?: ""
+                    password = project.findProperty("mavenPassword") ?: ""
+                }
+            }
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'androidx.test:core:1.6.1'
+        force 'androidx.test.espresso:espresso-core:3.6.1'
+        force 'androidx.test.ext:junit:1.2.1'
     }
 }
 
@@ -92,11 +109,11 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     testImplementation "org.jetbrains.kotlin:kotlin-test:1.7.10"
 
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.0'
-    androidTestImplementation 'androidx.test:core:1.6.0'
-    androidTestImplementation "androidx.test:runner:1.6.0"
-    androidTestImplementation "androidx.test:rules:1.6.0"
-    androidTestImplementation "androidx.test.ext:junit:1.2.0"
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    androidTestImplementation 'androidx.test:core:1.6.1'
+    androidTestImplementation "androidx.test:runner:1.6.1"
+    androidTestImplementation "androidx.test:rules:1.6.1"
+    androidTestImplementation "androidx.test.ext:junit:1.2.1"
     androidTestImplementation "androidx.test.ext:truth:1.6.0"
 
     testImplementation 'org.mockito:mockito-core:5.4.0'

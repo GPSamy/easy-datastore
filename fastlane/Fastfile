@@ -10,17 +10,26 @@ platform :android do
     version_number = ENV['VERSION_NUMBER'] || 'v1.0.0'
 
     begin
+      UI.message "Deleting existing tag if it exits"
+      sh "set -e; git tag -d #{version_number} || true"
+      sh "git push --delete origin #{version_number}  || true"
+
+      # Verify tag deletion
+      sh "set -e; git fetch --tags"
+      sh "if git tag -l | grep -q #{version_number}; then echo 'Tag deletion failed'; exit 1; else echo 'Tag deleted successfully'; fi"
+
       # Tag the release
-      sh "git tag #{version_number}"
-      sh "git push origin #{version_number}"
+      UI.message "Creating new tag #{version_number}"
+      sh "set -e; git tag #{version_number}"
+      sh "set -e; git push origin #{version_number}"
 
       # Create a release on GitHub
-      sh "hub release create -m 'Release #{version_number}' #{version_number}"
+      sh "set -e; hub release create -m 'Release #{version_number}' #{version_number}"
 
       # Build and publish to Maven local
-      gradle(task: "clean")
-      gradle(task: "assembleRelease")
-      gradle(task: "publishToMavenLocal")
+      gradle(task: "clean", flags: "--info")
+      gradle(task: "assembleRelease", flags: "--info")
+      gradle(task: "publishToMavenLocal", flags: "--info")
 
     rescue => e
       UI.error("Failed to publish_to_jitpack: #{e.message}")
