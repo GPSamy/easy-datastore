@@ -1,1 +1,7 @@
 vendor/bundle
+intermediates/
+kotlin/compileReleaseKotlin/
+libs/
+outputs/
+publication/mavenJava/
+tmp/
