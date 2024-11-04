@@ -1,6 +1,6 @@
 # Easy DataStore
 
-Easy DataStore is a lightweight Android library that replaces the traditional SharedPreferences with the new DataStore API. It uses the Factory pattern to create a singleton DataStore object, ensuring a simple and efficient way to store and retrieve values across your codebase.
+Easy DataStore is a lightweight Android library that replaces the traditional SharedPreferences with the new DataStore API. It uses the Builder pattern to create a singleton DataStore object, ensuring a simple and efficient way to store and retrieve values across your codebase.
 
 ## Features
 - Replace SharedPreferences with DataStore.
